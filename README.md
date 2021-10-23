@@ -3,6 +3,8 @@
 import "./tilekitter" for TileMap
 
 Class Main {
+  _init() {}
+  _draw(dt) {}
 }
 
-var Game is Main.new()
+var Game = Main.new()
