@@ -46,20 +46,18 @@ class TileMap {
 	tileWidth {_mapData["tile_w"]}
 	tileHeight {_mapData["tile_h"]}
 
-	drawTile(tile, x, y) {
-		var w = _mapData["tile_w"]
-		var h = _mapData["tile_h"]
-		var s = _mapData["tile_spacing"]
+	getTile(x, y) {_mapData["data"][x + (y * width)]}
+	setTile(x, y, tile) {_mapData["data"][x + (y * width)] = tile}
 
-		var spritesPerRow = _tileSheet.width / (w + s)
+	drawTile(tile, x, y) {
+		var spacing = _mapData["tile_spacing"]
+		var spritesPerRow = _tileSheet.width / (tileWidth + spacing)
 		var xPixel = (tile - 1) % spritesPerRow
 		var yPixel = ((tile - 1) / spritesPerRow).floor
-		_tileSheet.drawArea(xPixel * (w + s), yPixel * (h + s), w, h, x, y)
+		_tileSheet.drawArea(xPixel * (tileWidth + spacing), yPixel * (tileHeight + spacing), tileWidth, tileHeight, x, y)
 	}
-
+	
 	draw(x, y, dt) {
-		var mw = _mapData["w"]
-		var mh = _mapData["h"]
 		var tiles = _mapData["data"]
 		for (tile in 0...tiles.count) {
 			if (tiles[tile] != 0) {
@@ -72,7 +70,7 @@ class TileMap {
 					sprite = frames[frame]
 				}
 				
-				drawTile(sprite, (tile % mw) * _mapData["tile_w"], (tile / mw).floor * _mapData["tile_w"])
+				drawTile(sprite, (tile % width) * tileWidth, (tile / width).floor * tileWidth)
 			}
 		}
 	}
