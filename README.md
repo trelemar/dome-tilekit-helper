@@ -8,7 +8,7 @@ import "graphics" for Canvas, Color, ImageData, Point, Font
 import "dome" for Process, Window, Platform
 import "io" for FileSystem
 
-import "./tilekitter"
+import "./tilekit-helper"
 
 var OurMap = TileMap.new("map.json")
 
@@ -55,7 +55,7 @@ Returns tile at Map coordinates (x, y)
 #### `setTile(x: Number, y: Number, tile: Number)`
 Sets tile at Map coordinates (x, y)
 
-#### `drawTile(tile: Number, x: Number, y: Number`
+#### `drawTile(tile: Number, x: Number, y: Number)`
 Draw a single `tile` to Canvas at (x, y)
 
 #### `draw(x: Number, y: Number, dt: Number)`
