@@ -56,8 +56,8 @@ class TileMap {
 		var yPixel = ((tile - 1) / spritesPerRow).floor
 		_tileSheet.drawArea(xPixel * (tileWidth + spacing), yPixel * (tileHeight + spacing), tileWidth, tileHeight, x, y)
 	}
-	
-	draw(x, y, dt) {
+
+	draw(x, y) {
 		var tiles = _mapData["data"]
 		for (tile in 0...tiles.count) {
 			if (tiles[tile] != 0) {

@@ -18,8 +18,8 @@ class Main {
     Canvas.resize(OurMap.width * OurMap.tileWidth, OurMap.height * OurMap.tileHeight)
   }
   update() {}
-  draw(dt) {
-    OurMap.draw(0, 0, dt)
+  draw(alpha) {
+    OurMap.draw(0, 0)
   }
 }
 var Game = Main.new()
@@ -45,7 +45,7 @@ Height of tilemap in tiles
 Width of tiles in pixels
 
 #### `tileHeight: Number`
-Width of tiles in pixels
+Height of tiles in pixels
 
 ### Instance Methods
 
@@ -58,5 +58,5 @@ Sets tile at Map coordinates (x, y)
 #### `drawTile(tile: Number, x: Number, y: Number)`
 Draw a single `tile` to Canvas at (x, y)
 
-#### `draw(x: Number, y: Number, dt: Number)`
+#### `draw(x: Number, y: Number)`
 Draws entire TileMap to Canvas at (x, y)
