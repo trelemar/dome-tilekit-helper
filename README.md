@@ -1,6 +1,6 @@
-# tilekitter
+# tilekit-helper
 
-## Quickly import and process TileKit maps in DOME
+## Quickly import and process [TileKit](https://rxi.itch.io/tilekit) maps in [DOME](https://domeengine.com/)
 
 ### Example main.wren
 ```ruby
