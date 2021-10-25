@@ -57,19 +57,33 @@ class TileMap {
 		_tileSheet.drawArea(xPixel * (tileWidth + spacing), yPixel * (tileHeight + spacing), tileWidth, tileHeight, x, y)
 	}
 
+	calculateFrame(tile) {
+		var sprite = tile
+		if (_animationsList && _animationsList[tile]) {
+			var frames = _animationsList[sprite]["frames"]
+			var rate = _animationsList[sprite]["rate"]
+			var duration = rate / 1000
+			var frame = ((System.clock / duration) % frames.count).floor
+			sprite = frames[frame]
+		}
+		return sprite
+	}
+
+	drawArea(startX, startY, width, height, destX, destY) {
+		//var tiles = _mapData["data"]
+		for (x in 0...width) {
+			for (y in 0...height) {
+				var sprite = calculateFrame(getTile(startX + x, startY + y))
+				drawTile(sprite, destX + (x * tileWidth), destY + (y * tileHeight))
+			}
+		}
+	}
+
 	draw(x, y) {
 		var tiles = _mapData["data"]
 		for (tile in 0...tiles.count) {
 			if (tiles[tile] != 0) {
-				var sprite = tiles[tile]
-				if (_animationsList && _animationsList[sprite]) {
-					var frames = _animationsList[sprite]["frames"]
-					var rate = _animationsList[sprite]["rate"]
-					var duration = rate / 1000
-					var frame = ((System.clock / duration) % frames.count).floor
-					sprite = frames[frame]
-				}
-				
+				var sprite = calculateFrame(tiles[tile])
 				drawTile(sprite, (tile % width) * tileWidth, (tile / width).floor * tileWidth)
 			}
 		}

@@ -50,13 +50,16 @@ Height of tiles in pixels
 ### Instance Methods
 
 #### `getTile(x: Number, y: Number): Number`
-Returns tile at Map coordinates (x, y)
+Returns tile at map coordinates (x, y)
 
 #### `setTile(x: Number, y: Number, tile: Number)`
-Sets tile at Map coordinates (x, y)
+Sets tile at map coordinates (x, y)
 
 #### `drawTile(tile: Number, x: Number, y: Number)`
 Draw a single `tile` to Canvas at (x, y)
+
+#### `drawArea(startX: Number, startY: Number, width: Number, height: Number, destX: Number, destY: Number)`
+Draw a subsection of the map at (startX, startY) to (destX, destY) on Canvas
 
 #### `draw(x: Number, y: Number)`
 Draws entire TileMap to Canvas at (x, y)
